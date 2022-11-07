@@ -67,6 +67,7 @@ Step6- use "**kubectl get service web --url**" command to open the url in the br
 ![](https://i.imgur.com/EJGuRmP.png)
 ![](https://i.imgur.com/BpkFilH.png)
 ![](https://i.imgur.com/1cjlcqw.png)
+![](https://i.imgur.com/S8qDLgS.png)
 
 
 
