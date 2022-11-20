@@ -60,6 +60,8 @@ Step6- use "**kubectl get service web --url**" command to open the url in the br
 
 
 ### Screenshorts:
+
+### Docker
 ![](https://i.imgur.com/wg8hLCv.png)
 ![](https://i.imgur.com/hUQBnc4.png)
 ![](https://i.imgur.com/BcBE5MS.png)
@@ -69,7 +71,17 @@ Step6- use "**kubectl get service web --url**" command to open the url in the br
 ![](https://i.imgur.com/1cjlcqw.png)
 ![](https://i.imgur.com/S8qDLgS.png)
 
+### Kubernetes:
 
-
-
-
+#### Succesful Deploy:
+![](https://i.imgur.com/6pUDHVI.png)
+#### Show Pods:
+![](https://i.imgur.com/ymRsM8Q.png)
+#### Spring Logs:
+![](https://i.imgur.com/fMELjJR.png)
+#### Mongo Logs:
+![](https://i.imgur.com/DhKhiZ1.png)
+#### Get Data:
+![](https://i.imgur.com/BWQOKG9.png)
+#### Update Data:
+![](https://i.imgur.com/CVhNB3A.png)
