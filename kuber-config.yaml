@@ -1,20 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-        name: spring-boot-docker-image14
+  name: springboot-demo
+  labels:
+    app: springboot-demo9
 spec:
-        selector:
-                matchLabels:
-                        app: spring-boot-docker-image14
-        replicas: 3
-        template:
-                metadata:
-                        labels:
-                                app: spring-boot-docker-image14
-                spec:
-                        containers:
-                                - name: spring-boot-docker-image14
-                                  image: spring-boot-docker-image14:latest
-                                  imagePullPolicy: Never
-                                  ports:
-                                          - containerPort: 8085
+  replicas: 3
+  selector:
+    matchLabels:
+      app: springboot-demo
+  template:
+    metadata:
+      labels:
+        app: springboot-demo
+    spec:
+      containers:
+      - name: springboot-demo
+        image: spring-mongo-service2:1.0
+        ports:
+        - containerPort: 8087
