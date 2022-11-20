@@ -1,8 +1,0 @@
-com\rest\entities\Courses.class
-com\rest\RestApiApplication.class
-com\rest\configs\Swaggerconfig.class
-com\rest\ServletInitializer.class
-com\rest\controller\CoursesController.class
-com\rest\service\CoursesService.class
-com\rest\ServletInitializer$RestApiApplication.class
-com\rest\repository\CoursesRepository.class
