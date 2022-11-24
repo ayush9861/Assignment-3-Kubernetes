@@ -339,12 +339,32 @@ spec:
 ![](https://i.imgur.com/BWQOKG9.png)
 #### Update Data:
 ![](https://i.imgur.com/CVhNB3A.png)
+#### Server Start:
+![](https://i.imgur.com/c9BfkV8.png)
+
 
 ### MongoDb:
 
 ![](https://i.imgur.com/V0v4FIj.png)
 ![](https://i.imgur.com/NMbmslz.png)
 ![](https://i.imgur.com/Pf3RXRM.png)
+
+### Postman CURD Operations:-
+
+#### Get:-
+![](https://i.imgur.com/mcdz6jC.png)
+
+#### Add:-
+![](https://i.imgur.com/ICy14ik.png)
+
+#### Update:-
+![](https://i.imgur.com/cE5Vk90.png)
+
+#### Find By Name:-
+![](https://i.imgur.com/MhKK3GZ.png)
+
+#### Delete By Id:-
+![](https://i.imgur.com/mqx1BBi.png)
 
 ### Docker Hub Image Link:-
 
