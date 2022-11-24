@@ -203,6 +203,23 @@ spec:
 
 **mongo-service.yml**
 
+```
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: mongo
+  name: mongodb-service
+spec:
+  ports:
+  - port: 27017
+    targetPort: 27017
+  selector:
+    app: mongo
+  clusterIP: None
+  
+```
+**Explanation:-** In, this file we have configured the mongo service name we want to create, port and the target port which we want to use. 
 
 ### Installing and Configuring SpringBoot:-
 
