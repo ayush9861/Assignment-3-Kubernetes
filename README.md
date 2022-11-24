@@ -340,6 +340,11 @@ spec:
 #### Update Data:
 ![](https://i.imgur.com/CVhNB3A.png)
 
+### MongoDb:
+
+![](https://i.imgur.com/V0v4FIj.png)
+![](https://i.imgur.com/NMbmslz.png)
+![](https://i.imgur.com/Pf3RXRM.png)
 
 ### Docker Hub Image Link:-
 
