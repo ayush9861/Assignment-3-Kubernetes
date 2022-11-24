@@ -79,6 +79,7 @@ Step4- To, deploy our mongo server in kubernetes we will have to create some con
 - mongo-pv.yml
 - mongo-pvc.yml
 - mongo-deployment.yml
+- mongo-service.yml
 
 Step5- After, creating all the files. Its time to exectute the files. We can do it using the **Kubectl** and executing the following command:-
 
@@ -98,7 +99,7 @@ data:
   username: YWRtaW4=
   password: YWRtaW4=
   ```
-**Explination:-** In the above code we have configured and Secret file and given username and password for our mongodb server which is going to run in the kubernetes. Here, you can note the user name is in encrypted format. For the encryption of the username and password we have used base64. 
+**Explaination:-** In the above code we have configured and Secret file and given username and password for our mongodb server which is going to run in the kubernetes. Here, you can note the user name is in encrypted format. For the encryption of the username and password we have used base64. 
 
   **mongo-config.yml**
    ```
@@ -110,7 +111,7 @@ data:
  host: mongodb-service
  database: admin
  ```
- **Explination:-** In the above code we have configured a ConfigMap File. Basically a Configmap file is a API object which stores the data in key value pair. Pods can take the values from ConfigMap file and utilize them as enviroment variables and configuration files.
+ **Explaination:-** In the above code we have configured a ConfigMap File. Basically a Configmap file is a API object which stores the data in key value pair. Pods can take the values from ConfigMap file and utilize them as enviroment variables and configuration files.
  
  **mongo-pv.yml**
  ```
@@ -130,7 +131,7 @@ spec:
   hostPath:
     path: "/mnt/data" 
    ```
-**Explination:-** Configuring Volume is a messy problem for computers and takle this issue Kubernetes use the API PersistentVolume. Using PersistentVolume we can configure how the storgae is provided and how we are going to consume it. In specific PersistentVolume is a storage in the the cluster just like node in cluster resources. PV's have a life cycle independent from the pods.  
+**Explaination:-** Configuring Volume is a messy problem for computers and takle this issue Kubernetes use the API PersistentVolume. Using PersistentVolume we can configure how the storgae is provided and how we are going to consume it. In specific PersistentVolume is a storage in the the cluster just like node in cluster resources. PV's have a life cycle independent from the pods.  
 
 **mongo-pvc.yml**
 ```
@@ -149,7 +150,7 @@ spec:
       storage: 260Mi
       
  ```
- **Explination:-** pvc are similar to pods consumes Node resources and pvc consumes pv resources. pods can request specific leve of resources but claims can request specific size and access mode.
+ **Explaination:-** pvc are similar to pods consumes Node resources and pvc consumes pv resources. pods can request specific leve of resources but claims can request specific size and access mode.
  
 **mongo-deployment.yml**
 
@@ -198,7 +199,9 @@ spec:
           claimName: mongo-pv-claim 
  ```
  
-**Explination:-** This, is the file which cointains the main configuration. In this file we are going to give the replicas we want to create, metadata,template details and most importantly image name with version. This is the file in which we are going to compile all other components like mongo-secret, mongo-pv,mongo-pv-claim etc.
+**Explaination:-** This, is the file which cointains the main configuration. In this file we are going to give the replicas we want to create, metadata,template details and most importantly image name with version. This is the file in which we are going to compile all other components like mongo-secret, mongo-pv,mongo-pv-claim etc.
+
+**mongo-service.yml**
 
 
 ### Installing and Configuring SpringBoot:-
@@ -269,7 +272,7 @@ spec:
                  
 ```
 
-**Explination:-** This, is the file which cointains the main configuration. In this file we are going to give the replicas we want to create, metadata,template details and most importantly image name with version. This is the file in which we are going to compile all other components like replicas, port we are going to use, and all mongo files that we have created and deployed earlier.
+**Explaination:-** This, is the file which cointains the main configuration. In this file we are going to give the replicas we want to create, metadata,template details and most importantly image name with version. This is the file in which we are going to compile all other components like replicas, port we are going to use, and all mongo files that we have created and deployed earlier.
 
 **springboot-service.yml**
 
@@ -288,7 +291,7 @@ spec:
   type: NodePort
 
 ```
-**Explination:-** In this file we have configured the port, service name and the service type we are going to use. 
+**Explaination:-** In this file we have configured the port, service name and the service type we are going to use. 
 
 
 
