@@ -61,6 +61,20 @@ Step3- After, configuring the path its time to test if the program is working fi
 Step4- If, it is succesfull installed it will show you all the commands.
 
 
+### Installing and Configuring MongoDB
+
+Step1- First, of all start your Windows Docker server and open the power shell or command promnt.
+
+Step2- After, opening you will have to pull the **MongoDB** image from the docke hub. You can do this by using the following commands:-
+
+```
+docker pull mongo:latest 
+```
+Step3- After Pulling the latest image its time deploy it in  **Kubernetes** server.
+
+Step4- To, deploy our mongo server in kubernetes we will have to create some configuration files. The names of the files are 
+
+
 ### Screenshorts:
 
 ### Docker
