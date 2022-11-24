@@ -72,7 +72,19 @@ docker pull mongo:latest
 ```
 Step3- After Pulling the latest image its time deploy it in  **Kubernetes** server.
 
-Step4- To, deploy our mongo server in kubernetes we will have to create some configuration files. The names of the files are 
+Step4- To, deploy our mongo server in kubernetes we will have to create some configuration files. The names of the files are:-
+
+- mongo-secret.yml
+- mongo-config.yml
+- mongo-pv.yml
+- mongo-pvc.yml
+- mongo-deployment.yml
+
+Step5- After, creating all the files. Its time to exectute the files. We can do it using the **Kubectl** and executing the following command:-
+
+```
+kubectl apply -f {file name}.yml
+```
 
 
 ### Screenshorts:
