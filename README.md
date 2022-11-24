@@ -85,6 +85,113 @@ Step5- After, creating all the files. Its time to exectute the files. We can do 
 ```
 kubectl apply -f {file name}.yml
 ```
+### MongoDB Config Files:
+
+These are the files that I have used to configure the mongodb in the Kubernetes cluster.
+**mongo-secret.yml**
+```
+apiVersion: v1
+kind: Secret
+metadata:
+   name: mongo-secret
+data:
+  username: YWRtaW4=
+  password: YWRtaW4=
+  ```
+  
+  **mongo-config.yml**
+   ```
+   apiVersion: v1
+kind: ConfigMap
+metadata:
+   name: mongo-conf
+data:
+ host: mongodb-service
+ database: admin
+ ```
+ **mongo-pv.yml**
+ ```
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: mongo-pv-volume
+  labels:
+    type: local
+    app: mongo
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 250Mi
+  accessModes:
+    - ReadWriteMany
+  hostPath:
+    path: "/mnt/data"
+ 
+    ```
+
+**mongo-pvc.yml**
+```
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mongo-pv-claim
+  labels:
+    app: mongo
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 260Mi
+      ```
+**mongo-deployment.yml**
+```
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongo
+  labels:
+    app: mongo
+spec:
+  selector: 
+    matchLabels:
+      app: mongo
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: mongo
+      name: mongodb-service
+    spec:
+      containers:
+      - image: mongo:latest
+        name: mongo
+        
+        env:
+          - name: MONGO_INITDB_ROOT_USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: mongo-secret
+                key: username
+          - name: MONGO_INITDB_ROOT_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: mongo-secret
+                key: password
+        ports:
+        - containerPort: 27017
+          name: mongo                
+        volumeMounts:
+        - name: mongo-persistent-storage
+          mountPath: /data/db 
+      volumes:
+      - name: mongo-persistent-storage
+        persistentVolumeClaim:
+          claimName: mongo-pv-claim          
+      ```
+
+
 
 
 ### Screenshorts:
