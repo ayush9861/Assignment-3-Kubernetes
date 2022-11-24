@@ -20,43 +20,45 @@
 
 ### Steps to Build Docker Image:
 
-Step1- Create a file named Docker.
+Step1- First of all open your sping boot project and a file name **Dockerfile** and write all your docker configuration data like what version of **openjdk** you are using, your output file name, port you want to expose for the cointainer etc and save it.
 
-Step2- Clean the meaven using the maven plugin.
+Step2- In, this step you will have to clean your project using the **Maven** clean function.
 
-Step3- Do a Package build using maven plugin.
+Step3- In, this step you will have to package your project. You can do this by using **Maven** install function.
 
-Step4- If, build is succesful move to the target folder you will find a jar file that you have given in your docker config.
+Step4- If, your packaging is succesfull a new folder will be create named target and inside it you will find your required jar file to build your docker image.
 
+Step5- After, this navigate to your project in file explorer and open command promt or powershell and write the following command:-
 
-Now, if the build has succesfully created. Time to run the file to create a Image.
+```
+Docker build -t {your jar finename} .
+```
+Step6:- If everything goew well your docker image will be created succesfully and you can confirm it by typing this command:-
 
-
-### Steps to Build Docker Image:
-
-Step1- Go to the terminal and type "Docker run {package name}"
-
-Step2- If, run succesful you will see the spring book stating on your terminal.
-
-
-Finally, you have create the docker image for your spring boot application.
-
-Now, you can check if it is working or not by visiting the localhost url along with the port given in the Docker file.
-
+```
+Docker images
+```
 
 ### Steps to install Kubernates:
 
-Step1-Download and install minikube
+Step1- Download and install minikube using this command:-
 
-Step2-Install Minikube with driver docker setting.
+```
+New-Item -Path 'c:\' -Name 'minikube' -ItemType Directory -Force
+Invoke-WebRequest -OutFile 'c:\minikube\minikube.exe' -Uri 'https://github.com/kubernetes/minikube/releases/latest/download/minikube-windows-amd64.exe' -UseBasicParsing
+```
 
-Step3- Using "**kubectl create deployment {yourpackagename --imagename:tag}**"
+Step2- After, downloading its time to configure the downloaded binary file ``` PATH ``` of the minikube package. We can do this using the following command:-
 
-Step4- Using kubectl **expose deployment {packagename} --type=NodePort --port{yourport}**.
+```
+$oldPath = [Environment]::GetEnvironmentVariable('Path', [EnvironmentVariableTarget]::Machine)
+if ($oldPath.Split(';') -inotcontains 'C:\minikube'){ `
+  [Environment]::SetEnvironmentVariable('Path', $('{0};C:\minikube' -f $oldPath), [EnvironmentVariableTarget]::Machine) `
+}
+```
+Step3- After, configuring the path its time to test if the program is working file or not. But, vefore teting make sure to start the windows docker server and open the commandpromnt or powershell and type ```minikube start```.
 
-Step5- We, can check if the service is running or not by "**kubectl get service web**" command.
-
-Step6- use "**kubectl get service web --url**" command to open the url in the browser.
+Step4- If, it is succesfull installed it will show you all the commands.
 
 
 ### Screenshorts:
