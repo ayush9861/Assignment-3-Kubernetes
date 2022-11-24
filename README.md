@@ -128,9 +128,8 @@ spec:
   accessModes:
     - ReadWriteMany
   hostPath:
-    path: "/mnt/data"
- 
-    ```
+    path: "/mnt/data" 
+   ```
 **Explination:-** Configuring Volume is a messy problem for computers and takle this issue Kubernetes use the API PersistentVolume. Using PersistentVolume we can configure how the storgae is provided and how we are going to consume it. In specific PersistentVolume is a storage in the the cluster just like node in cluster resources. PV's have a life cycle independent from the pods.  
 
 **mongo-pvc.yml**
@@ -199,7 +198,98 @@ spec:
           claimName: mongo-pv-claim 
  ```
  
-**Explination:-** This, is the file which cointains the mian configuration. In this file we are going to give the replicas we want to create, metadata,template details and most importantly image name with version. This is the file in which we are going to compile all other components like mongo-secret, mongo-pv,mongo-pv-claim etc.
+**Explination:-** This, is the file which cointains the main configuration. In this file we are going to give the replicas we want to create, metadata,template details and most importantly image name with version. This is the file in which we are going to compile all other components like mongo-secret, mongo-pv,mongo-pv-claim etc.
+
+
+### Installing and Configuring SpringBoot:-
+
+After, Building the docker image of our spring boot application. We can now deploy it to our Kubernets cluster. 
+
+Step1 - Create two files and configure it with all the details required:-
+
+- spring-deployment.yml
+- spring-service.yml
+
+Step2- Time, to deploy them. We can deploy them using the following command:-
+
+```
+kubectl apply -f {file name}.yml
+```
+
+### SpringBoot Config Files:
+
+For, deploying spring boot in the kubernetes cluster we are going to configure it using these files.
+
+**springboot-deployment.yml**
+
+```
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-mongo-service1
+spec:
+  selector:
+      matchLabels:
+        app: spring-mongo-service1
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: spring-mongo-service1
+    spec:
+      containers:
+        - name: spring-mongo-service1
+          image: spring-mongo-service1:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 8090
+          env:
+            - name: MONGO_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: mongo-secret
+                  key: username
+            - name: MONGO_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mongo-secret
+                  key: password
+            - name: MONGO_DB
+              valueFrom:
+                configMapKeyRef:
+                  name: mongo-conf  
+                  key: database
+            - name: MONGO_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: mongo-conf 
+                  key: host
+                 
+```
+
+**Explination:-** This, is the file which cointains the main configuration. In this file we are going to give the replicas we want to create, metadata,template details and most importantly image name with version. This is the file in which we are going to compile all other components like replicas, port we are going to use, and all mongo files that we have created and deployed earlier.
+
+**springboot-service.yml**
+
+```
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: spring-mongo-service
+spec:
+  selector:
+    app: spring-mongo-service
+  ports:
+  - name: http 
+    port: 8090
+  type: NodePort
+
+```
+**Explination:-** In this file we have configured the port, service name and the service type we are going to use. 
+
 
 
 
