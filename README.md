@@ -144,8 +144,9 @@ spec:
   resources:
     requests:
       storage: 260Mi
-      ```
+ 
 **mongo-deployment.yml**
+
 ```
 apiVersion: apps/v1
 kind: Deployment
@@ -188,8 +189,10 @@ spec:
       volumes:
       - name: mongo-persistent-storage
         persistentVolumeClaim:
-          claimName: mongo-pv-claim          
-      ```
+          claimName: mongo-pv-claim 
+    
+ ```
+
 
 
 
