@@ -1,0 +1,7 @@
+com\rest\controller\ServerController.class
+com\rest\repository\ServerRepository.class
+com\rest\service\ServerService.class
+com\rest\RestApiApplication.class
+com\rest\entities\Server.class
+com\rest\ServletInitializer.class
+com\rest\ServletInitializer$RestApiApplication.class
